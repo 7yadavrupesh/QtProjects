@@ -3,8 +3,8 @@
 # Project created by QtCreator 2014-09-10T13:21:31
 #
 #-------------------------------------------------
-
-QT = core network
+QT += core gui
+QT += core network
 CONFIG += console
 CONFIG -= app_bundle
 
