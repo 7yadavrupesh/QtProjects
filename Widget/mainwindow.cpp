@@ -5,6 +5,7 @@
 MainWindow::MainWindow(QWidget *parent) :    QMainWindow(parent),    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->addressBar->setText("http://textfiles.com/100/914bbs.txt");
 }
 
 MainWindow::~MainWindow()
@@ -19,13 +20,16 @@ void MainWindow::on_pushButton_clicked()
     QUrl url(HttpAddress);
     request.setUrl(url);
     reply = manager.get(request);
-    connect(reply, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
+    connect(reply, SIGNAL(readyRead()), SLOT(slotReadyRead()));
 }
 void MainWindow::slotReadyRead(){
-    file = new QFile("DownloadedData.txt");
-    file->open(0,QIODevice::ReadWrite);
-    file->write(reply->readAll());
     QByteArray bArray = reply->readAll();
     QString tempString = bArray.data();
     ui->textEdit->append(tempString);
+    ui->textEdit->append(reply->url().fileName());
+    file = new QFile();
+    file->setFileName(reply->url().fileName());
+    file->open(QIODevice::WriteOnly);
+    file->write(reply->readAll());
+    file->close();
 }

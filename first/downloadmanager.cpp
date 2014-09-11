@@ -128,5 +128,7 @@ void DownloadManager::downloadFinished()
 
 void DownloadManager::downloadReadyRead()
 {
-    output.write(currentDownload->readAll());
+    QByteArray tempByteArray = currentDownload->readAll();
+    QString tempString = tempByteArray.data();
+    output.write(tempByteArray);
 }
