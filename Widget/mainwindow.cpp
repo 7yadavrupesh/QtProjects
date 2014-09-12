@@ -5,7 +5,7 @@
 MainWindow::MainWindow(QWidget *parent) :    QMainWindow(parent),    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->addressBar->setText("https://github.com/7yadavrupesh/QtProjects/archive/master.zip");
+    ui->addressBar->setText("http://eofdreams.com/data_images/dreams/eclipse/eclipse-04.jpg");
 }
 
 MainWindow::~MainWindow()
@@ -21,9 +21,10 @@ void MainWindow::on_pushButton_clicked()
     QUrl url(HttpAddress);
     request.setUrl(url);
     reply = manager.get(request);
-    connect(reply, SIGNAL(readyRead()), SLOT(slotReadyRead()));
+    //connect(reply, SIGNAL(readyRead()), SLOT(slotReadyRead()));
     connect(reply, SIGNAL(finished()), SLOT(downloadFinished()));
 }
+
 void MainWindow::slotReadyRead(){
 
     file = new QFile(reply->url().fileName());
@@ -34,8 +35,12 @@ void MainWindow::slotReadyRead(){
 }
 
 void MainWindow::downloadFinished(){
+
+    QByteArray jpegData = reply->readAll();
+        QPixmap pixmap;
+        pixmap.loadFromData(jpegData);
     ui->pushButton->setEnabled(true);
-    file->close();
+    //ui->textBrowser();
     QMessageBox msg;
     msg.setWindowTitle(" ");
     msg.setStandardButtons(QMessageBox::Ok);

@@ -28,6 +28,7 @@ private slots:
     void on_pushButton_clicked();
     void slotReadyRead();
     void downloadFinished();
+
 private:
     Ui::MainWindow *ui;
     QNetworkAccessManager manager;
