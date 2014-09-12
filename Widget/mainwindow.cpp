@@ -5,7 +5,7 @@
 MainWindow::MainWindow(QWidget *parent) :    QMainWindow(parent),    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->addressBar->setText("http://textfiles.com/100/914bbs.txt");
+    ui->addressBar->setText("https://github.com/7yadavrupesh/QtProjects/archive/master.zip");
 }
 
 MainWindow::~MainWindow()
@@ -15,21 +15,30 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
+    ui->pushButton->setEnabled(false);
     QString HttpAddress = ui->addressBar->text();
-    ui->textEdit->append("<b>Button Clicked!!</b>");
+    ui->textBrowser->append("<b>Button Clicked!!</b>");
     QUrl url(HttpAddress);
     request.setUrl(url);
     reply = manager.get(request);
     connect(reply, SIGNAL(readyRead()), SLOT(slotReadyRead()));
+    connect(reply, SIGNAL(finished()), SLOT(downloadFinished()));
 }
 void MainWindow::slotReadyRead(){
-    QByteArray bArray = reply->readAll();
-    QString tempString = bArray.data();
-    ui->textEdit->append(tempString);
-    ui->textEdit->append(reply->url().fileName());
-    file = new QFile();
-    file->setFileName(reply->url().fileName());
-    file->open(QIODevice::WriteOnly);
-    file->write(reply->readAll());
+
+    file = new QFile(reply->url().fileName());
+    if(file->open(QIODevice::WriteOnly)){
+        file->write(reply->readAll());
+    }else
+        cout << "Unable to open file";
+}
+
+void MainWindow::downloadFinished(){
+    ui->pushButton->setEnabled(true);
     file->close();
+    QMessageBox msg;
+    msg.setWindowTitle(" ");
+    msg.setStandardButtons(QMessageBox::Ok);
+    msg.setText(file->fileName()+" Downloaded");
+    msg.exec();
 }

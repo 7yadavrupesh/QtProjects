@@ -5,6 +5,7 @@
 #include <QtNetwork/qnetworkaccessmanager.h>
 #include <QtNetwork/qnetworkrequest.h>
 #include <QtNetwork/qnetworkreply.h>
+#include <QMessageBox>
 #include <QFile>
 #include <iostream>
 #include <stdlib.h>
@@ -26,12 +27,14 @@ public:
 private slots:
     void on_pushButton_clicked();
     void slotReadyRead();
+    void downloadFinished();
 private:
     Ui::MainWindow *ui;
     QNetworkAccessManager manager;
     QNetworkReply *reply;
     QNetworkRequest request;
     QFile *file;
+    QString fileContent;
 };
 
 #endif // MAINWINDOW_H

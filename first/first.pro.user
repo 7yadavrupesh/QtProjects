@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 3.1.1, 2014-09-11T15:52:25. -->
+<!-- Written by QtCreator 3.1.1, 2014-09-12T12:34:44. -->
 <qtcreator>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -233,7 +233,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">first</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">first2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/RADIXLOCAL/rupesh.yadav/QtProjects/first/first.pro</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments">http://textfiles.com/100/914bbs.txt</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments">https://github.com/7yadavrupesh/QtProjects/archive/master.zip</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">first.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseTerminal">true</value>
