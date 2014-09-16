@@ -27,21 +27,21 @@ Window {
         delegate: contactDelegate
         highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
         focus: true
+
         Keys.onLeftPressed: {
-            grid.moveCurrentIndexLeft();
+            moveCurrentIndexLeft();
             console.log("left"+currentIndex)
-            grid.model;
         }
         Keys.onRightPressed: {
-            grid.moveCurrentIndexRight();
+            moveCurrentIndexRight();
             console.log("Right"+currentIndex)
         }
         Keys.onUpPressed: {
-            grid.moveCurrentIndexUp();
+            moveCurrentIndexUp();
             console.log("Up"+ currentIndex)
         }
         Keys.onDownPressed: {
-            grid.moveCurrentIndexDown();
+            moveCurrentIndexDown();
             console.log("Down" + currentIndex)
         }
     }
