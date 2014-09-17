@@ -26,17 +26,27 @@ Window {
                      {}
                      else{
                         if(index == grid.currentIndex+1){
-                            listModel.move(grid.currentIndex,index,1)}
+                            if(grid.currentIndex == 2 || grid.currentIndex == 5 )
+                                return;
+                            listModel.move(grid.currentIndex,index,1)
+                            number.text = number.text*1 +1;
+                        }
                         if(index == grid.currentIndex+3){
                             listModel.move(grid.currentIndex,index,1)
-                            listModel.move(index,grid.currentIndex,1)}
+                            listModel.move(index,grid.currentIndex,1)
+                            number.text = number.text*1 +1;
+                        }
                         if(index == grid.currentIndex-1){
-                            listModel.move(grid.currentIndex,index,1)}
+                            if(grid.currentIndex == 3 || grid.currentIndex == 6 )
+                                return;
+                            listModel.move(grid.currentIndex,index,1)
+                            number.text = number.text*1 +1;
+                        }
                         if(index == grid.currentIndex-3){
                             listModel.move(grid.currentIndex,index,1)
                             listModel.move(index,grid.currentIndex,1)
+                            number.text = number.text*1 +1;
                         }
-                        number.text = number.text*1 + 1;
                         if(!Logic.checkComplete(listModel)){
                             startPlaying.text = "Complete";
                         }
